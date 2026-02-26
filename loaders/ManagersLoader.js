@@ -13,6 +13,7 @@ const TokenManager          = require('../managers/token/Token.manager');
 const UserManager           = require('../managers/entities/user/User.manager');
 const SchoolManager         = require('../managers/entities/school/School.manager');
 const ClassroomManager      = require('../managers/entities/classroom/Classroom.manager');
+const StudentManager        = require('../managers/entities/student/Student.manager');
 
 /**
  * load sharable modules
@@ -55,7 +56,7 @@ module.exports = class ManagersLoader {
         const middlewaresLoader           = new MiddlewaresLoader(this.injectable);
         const mwsRepo                     = middlewaresLoader.load();
         this.injectable.mwsRepo           = mwsRepo;
-        
+
         /*****************************************CUSTOM MANAGERS*****************************************/
         this.managers.token               = new TokenManager(this.injectable);
         /*************************************************************************************************/
@@ -64,6 +65,7 @@ module.exports = class ManagersLoader {
         this.managers.user                = new UserManager(this.injectable);
         this.managers.school              = new SchoolManager(this.injectable);
         this.managers.classroom           = new ClassroomManager(this.injectable);
+        this.managers.student             = new StudentManager(this.injectable);
         /*************************************************************************************************/
 
         this.managers.mwsExec             = new VirtualStack({ ...{ preStack: ['__device'] }, ...this.injectable });
