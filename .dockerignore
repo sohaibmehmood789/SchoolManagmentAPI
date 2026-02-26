@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment (will be set in Railway)
+.env
+.env.local
+.env.*.local
+
+# Tests
+tests/
+*.test.js
+coverage/
+
+# Documentation
+*.md
+!README.md
+
+# Misc
+*.log
+*.pid
+*.seed
+.nyc_output

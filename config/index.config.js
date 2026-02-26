@@ -5,7 +5,7 @@ const utils                            = require('../libs/utils');
 
 // Service Configuration
 const SERVICE_NAME                     = (process.env.SERVICE_NAME) ? utils.slugify(process.env.SERVICE_NAME) : pjson.name;
-const USER_PORT                        = process.env.USER_PORT || 5111;
+const USER_PORT                        = process.env.PORT || process.env.USER_PORT || 5111; // Railway uses PORT
 const ENV                              = process.env.ENV || "development";
 
 // Redis Configuration
