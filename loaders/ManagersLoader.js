@@ -17,7 +17,7 @@ const TimeMachine           = require('../managers/time_machine/TimeMachine.mana
 // Entity Managers
 const UserManager           = require('../managers/entities/user/User.manager');
 
-/** 
+/**
  * load sharable modules
  * @return modules tree with instance of each module
 */
@@ -28,21 +28,21 @@ module.exports = class ManagersLoader {
         this.config     = config;
         this.cache      = cache;
         this.cortex     = cortex;
-        
+
         this._preload();
         this.injectable = {
             utils,
-            cache, 
+            cache,
             config,
             cortex,
             oyster,
             aeon,
-            managers: this.managers, 
+            managers: this.managers,
             validators: this.validators,
             mongomodels: this.mongomodels,
             resourceNodes: this.resourceNodes,
         };
-        
+
     }
 
     _preload(){
@@ -70,16 +70,16 @@ module.exports = class ManagersLoader {
         this.managers.timeMachine         = new TimeMachine(this.injectable);
         this.managers.token               = new TokenManager(this.injectable);
         /*************************************************************************************************/
-        
+
         /*****************************************ENTITY MANAGERS*****************************************/
         this.managers.user                = new UserManager(this.injectable);
         /*************************************************************************************************/
-        
+
         this.managers.mwsExec             = new VirtualStack({ ...{ preStack: [/* '__token', */'__device',] }, ...this.injectable });
         this.managers.userApi             = new ApiHandler({...this.injectable,...{prop:'httpExposed'}});
         this.managers.userServer          = new UserServer({ config: this.config, managers: this.managers });
 
-       
+
         return this.managers;
 
     }

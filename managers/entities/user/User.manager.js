@@ -12,7 +12,7 @@ module.exports = class User {
         this.httpExposed         = ['register', 'login', 'get=profile'];
     }
 
-    
+
     async register({username, email, password, role, schoolId}){
         const userData = {username, email, password, role, schoolId};
 
